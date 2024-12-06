@@ -249,3 +249,37 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+
+document.querySelector("#contact-form").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+  
+  const response = await fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: {
+          'Accept': 'application/json'
+      }
+  });
+
+  if (response.ok) {
+      document.querySelector(".sent-message").style.display = "block";
+      document.querySelector(".loading").style.display = "none";
+      document.querySelector(".error-message").style.display = "none";
+
+      setTimeout(function() {
+        
+        document.querySelector(".sent-message").classList.add("hidden");
+
+        // Hide the element after the fade-out is complete
+       
+      }, 300);
+
+      form.reset();
+  } else {
+      document.querySelector(".error-message").style.display = "block";
+      document.querySelector(".loading").style.display = "none";
+  }
+});
