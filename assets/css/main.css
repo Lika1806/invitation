@@ -1668,3 +1668,8 @@ section,
   font-size: 24px; /* Adjust the size as needed */
 }
 
+.language-switcher {
+  font-weight: 800;
+  align-items: right;
+  align-content: right;
+}
